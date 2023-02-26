@@ -11,5 +11,10 @@ class SavingsAccountKid extends SavingsAccount{
    // Check if the parameter parentName is equals to the
    // instance variable parentName before withdrawing from
    // the account
+      if(parentName.equals(this.parentName)){
+         super.withdraw(amount);
+      } else{
+         throw new Exception("Parent name entered is different than the one connecting to the account.");
+      }
    }
 }

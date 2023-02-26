@@ -16,7 +16,12 @@ class SavingsAccount extends BankAccount {
    }
 
    public void withdraw(double amount) throws Exception{
-      setBalance(getBalance() - amount);
+      if(withdrawCount == 6){
+         throw new Exception("Exceeded withdraw limit, can't withdraw anymore money");
+      } else{
+         withdrawCount++;
+         super.withdraw(amount);
+      }
    }
 
    public int getWithdrawCount() {

@@ -20,8 +20,8 @@ abstract class BankAccount implements BankAccountInterface{
 
     @Override
     public void deposit(double amount) throws Exception{
-        if(amount < 0){
-            throw new Exception("Deposit can't be negative");
+        if(amount < 1){
+            throw new Exception("Deposit can't be less than 1");
         } else{
             balance += amount;
         }
@@ -29,18 +29,22 @@ abstract class BankAccount implements BankAccountInterface{
 
     @Override
     public void withdraw(double amount) throws Exception {
-        if(amount < 0){
-            throw new Exception("Can't withdraw a negative amount");
-        } else{
+        if(amount < 1){
+            throw new Exception("Can't withdraw an amount less than 1");
+        } else if (amount > balance) {
+            throw new Exception("Not enough money in the bank account");
+        }  else{
             balance -= amount;
         }
     }
 
     @Override
     public void transfer(double amount, BankAccount destination) throws Exception {
-        if(amount < 0){
-            throw new Exception("Can't send a negative amount of money");
-        } else{
+        if(amount < 1){
+            throw new Exception("Transfer cannot be less than 1");
+        } else if (amount > balance) {
+            throw new Exception("Not enough money in the bank account");
+        }else{
             destination.balance += amount;
             this.balance -= amount;
         }
