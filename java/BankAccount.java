@@ -1,53 +1,54 @@
-abstract class BankAccount implements BankAccountInterface{
+public abstract class BankAccount implements BankAccountInterface {
     private String name;
     private double balance;
 
-    public BankAccount (String name, double initialDeposit) throws Exception {
+    public BankAccount (String name, double initialDeposit) throws IllegalArgumentException {
        // WRITE YOUR CODE HERE
        // If the name does not have more than 2 characters
        // the constructor should throw an Exception
        // Also, if the initialDeposit is negative or equal
        // to zero, it should throw an Exception
         if(name.length() > 2){
-            throw new Exception("Name can not be longer than 2 characters");
+            throw new IllegalArgumentException("Name can not be longer than 2 characters");
         } else if(initialDeposit < 1){
-            throw new Exception("Deposit must be larger than 0");
-        } else{
-            this.name = name;
-            this.balance = initialDeposit;
+            throw new IllegalArgumentException("Deposit must be larger than 0");
         }
+
+        this.name = name;
+        this.balance = initialDeposit;
+
     }
 
     @Override
-    public void deposit(double amount) throws Exception{
-        if(amount < 1){
-            throw new Exception("Deposit can't be less than 1");
-        } else{
-            balance += amount;
+    public void deposit(double amount) throws IllegalArgumentException{
+        if(amount < 0.01){
+            throw new IllegalArgumentException("Deposit can't be less than 1 cent");
         }
+
+        balance += amount;
     }
 
     @Override
     public void withdraw(double amount) throws Exception {
-        if(amount < 1){
-            throw new Exception("Can't withdraw an amount less than 1");
+        if(amount <0.01){
+            throw new IllegalArgumentException("Can't withdraw an amount less than 1 cent");
         } else if (amount > balance) {
-            throw new Exception("Not enough money in the bank account");
-        }  else{
-            balance -= amount;
+            throw new IllegalStateException("Not enough money in the bank account");
         }
+
+        balance -= amount;
     }
 
     @Override
     public void transfer(double amount, BankAccount destination) throws Exception {
-        if(amount < 1){
-            throw new Exception("Transfer cannot be less than 1");
+        if(amount < 0.01){
+            throw new IllegalArgumentException("Transfer cannot be less than 1 cent");
         } else if (amount > balance) {
-            throw new Exception("Not enough money in the bank account");
-        }else{
-            destination.balance += amount;
-            this.balance -= amount;
+            throw new IllegalStateException("Not enough money in the bank account");
         }
+
+        destination.balance += amount;
+        this.balance -= amount;
     }
 
     public double getBalance(){
@@ -58,20 +59,18 @@ abstract class BankAccount implements BankAccountInterface{
         return this.name;
     }
 
-    public void setBalance(double balance) throws Exception{
-        if(balance > 0){
-            this.balance = balance;
-        } else{
-            throw new Exception("Can't have a negative balance");
+    protected void setBalance(double balance) throws IllegalStateException{
+        if(balance < 0){
+            throw new IllegalStateException("Can't have a negative balance");
         }
+        this.balance = balance;
     }
 
     public void setName(String name) throws Exception{
-        if(name.length() < 2){
-            this.name = name;
-        } else{
-            throw new Exception("Can't have a name longer than 2 characters");
+        if (name.length() > 2) {
+            throw new IllegalArgumentException("Can't have a name longer than 2 characters");
         }
+        this.name = name;
     }
     //With the same logic, throw an Exception in the deposit
     //method if the amount is negative or equal to zero.
