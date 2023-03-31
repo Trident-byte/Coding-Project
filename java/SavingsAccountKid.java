@@ -1,4 +1,4 @@
-class SavingsAccountKid extends SavingsAccount{
+public class SavingsAccountKid extends SavingsAccount{
    private String parentName;
    public SavingsAccountKid(String name, double initialDeposit, double interestRate, String parentName)
            throws Exception {
@@ -15,6 +15,10 @@ class SavingsAccountKid extends SavingsAccount{
          throw new IllegalArgumentException("Parent name entered is different than the one connecting to the account.");
       }
 
-      withdraw(amount);
+      super.withdraw(amount);
+   }
+
+   public String getParentName() {
+      return parentName;
    }
 }

@@ -1,4 +1,4 @@
-class SavingsAccount extends BankAccount {
+public class SavingsAccount extends BankAccount {
    private static final int MAX_WITHDRAW_COUNT = 6;
 
    private double interestRate;
@@ -6,15 +6,16 @@ class SavingsAccount extends BankAccount {
 
    public SavingsAccount(String name, double initialDeposit, double interestRate)throws Exception {
       super(name, initialDeposit);
+      if(interestRate <= 0 || interestRate >= 1){
+         throw new IllegalArgumentException("Must have an interest between, but not including 0 and 1");
+      }
       this.interestRate = interestRate;
       this.withdrawCount = 0;
    }
    public void addInterest() throws Exception {
-      if(interestRate < 1) {
-         throw new IllegalArgumentException("Can have an interest rate that decreases deposit");
-      }
-
-      setBalance(getBalance() * interestRate);
+      emptyBalance();
+      double interest = getBalance() * interestRate;
+      deposit(interest);
    }
 
    public void withdraw(double amount) throws Exception{
@@ -23,10 +24,14 @@ class SavingsAccount extends BankAccount {
       }
 
       withdrawCount++;
-      withdraw(amount);
+      super.withdraw(amount);
    }
 
    public int getWithdrawCount() {
       return withdrawCount;
+   }
+
+   public double getInterestRate(){
+      return interestRate;
    }
 }
