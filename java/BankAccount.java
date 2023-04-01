@@ -8,8 +8,8 @@ public abstract class BankAccount implements BankAccountInterface {
        // the constructor should throw an Exception
        // Also, if the initialDeposit is negative or equal
        // to zero, it should throw an Exception
-        if(name.length() < 2){
-            throw new IllegalArgumentException("Name can not be smaller than 2 characters");
+        if(name.length() < 3){
+            throw new IllegalArgumentException("Name must have more than 2 characters");
         } else if(initialDeposit < 0.01){
             throw new IllegalArgumentException("Minimum deposit is 0.01");
         }
