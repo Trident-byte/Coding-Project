@@ -46,15 +46,17 @@ public class MyDequeTest {
     @Test
     public void triggerResize() {
         MyDeque<String> q = new MyDeque<>();
+        q.addFirst("pal");
+        q.addFirst("there");
         q.addFirst("Hello");
-        q.addLast("James");
+        q.addLast("Leon");
         q.addFirst("Well");
-        q.addLast("Wane");
-        q.addLast("what");
+        q.addLast("Smith");
+        q.addLast("Where");
         q.addLast("is");
         q.addLast("your");
-        q.addLast("problem");
-        q.addLast("AI");
+        q.addLast("Friend");
+        q.addLast("ML");
         q.addLast("will");
         q.addLast("be");
         q.addLast("the");
@@ -63,8 +65,17 @@ public class MyDequeTest {
         q.addLast("computing");
         q.addFirst("Hola");
 
-        assertEquals(16, q.size());
+        assertEquals(18, q.size());
 
+        while (q.size() != 0) {
+            if (q.size() % 2 == 1) {
+                q.removeFirst();
+            } else {
+                q.removeLast();
+            }
+        }
+
+        assertEquals(0, q.size());
 
     }
 
@@ -79,6 +90,17 @@ public class MyDequeTest {
 
     }
 
+    @Test
+    public void mixAddOperations() {
+        MyDeque<String> q = new MyDeque<>();
+        q.addFirst("James");
+        assertEquals("James", q.getLast());
+        q.removeLast();
+        q.addLast("Bond");
+        q.addLast("Rules");
+        q.addFirst("James");
+        assertEquals("[James, Bond, Rules]",q.toString());
+    }
 
 
 }
