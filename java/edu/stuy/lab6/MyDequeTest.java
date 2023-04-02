@@ -64,5 +64,15 @@ public class MyDequeTest {
     }
 
 
+    @Test
+    public void getLastWithoutAddingLast(){
+        MyDeque<String> q = new MyDeque<>();
+        q.addFirst("James");
+        assertEquals("James", q.getLast());
+
+
+    }
+
+
 
 }

@@ -28,6 +28,7 @@ public class MyDeque<E>{
     // Add a new value on the indicated side
     public void addFirst(E element) throws NullPointerException{
         nullElement(element);
+
         if(size == data.length){
             resize();
         }
@@ -36,6 +37,11 @@ public class MyDeque<E>{
         }else{
             start--;
         }
+
+        if(size == 0){
+            end = start;
+        }
+
         data[start] = element;
         size++;
     }
@@ -44,6 +50,10 @@ public class MyDeque<E>{
         if(size == data.length){
             resize();
         }
+        if(end == data.length - 1){
+            end = 0;
+        }
+
         if (end != 0 || data[end] != null) {
             end++;
         }

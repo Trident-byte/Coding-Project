@@ -80,6 +80,11 @@ public class Driver{
             System.out.println(arrayString2);
             System.out.println();
 
+            MyDeque<String> test6 = new MyDeque<String>(5);
+            test6.addFirst("Hi");
+            System.out.println(test6.getFirst());
+            System.out.println(test6.getLast());
+
 
         } catch(Exception e){
             e.printStackTrace();
