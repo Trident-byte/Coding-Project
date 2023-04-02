@@ -41,13 +41,8 @@ public class MyDeque<E>{
           resize();
         }
         data[end] = element;
-        size++; 
-        if(end == data.length){
-            end = 0;
-            end++;
-        } else{
-          end++;
-        }
+        size++;
+        end++;
       }
       
       // // Remove and return the element
@@ -61,8 +56,8 @@ public class MyDeque<E>{
       }
       public E removeLast() throws NoSuchElementException{ 
         emptyArray();
-        E element = data[end];
-        data[end] = null;
+        E element = data[end - 1];
+        data[end - 1] = null;
         end--;
         size--;
         return element;
@@ -73,7 +68,7 @@ public class MyDeque<E>{
         return data[start];
       }
       public E getLast(){ 
-        return data[end];
+        return data[end - 1];
       }
       
       // Return deque size
@@ -121,7 +116,7 @@ public class MyDeque<E>{
         int startIndex = start;
         String representation = "[";
         for(int i = 0; i < size; i++){
-            representation += data[startIndex] + ", ";
+            representation += data[startIndex] + (i != size -1 ? ", ": "");
             if(startIndex == data.length-1){
                 startIndex = 0;
             }
