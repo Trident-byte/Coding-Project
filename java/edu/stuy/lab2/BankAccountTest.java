@@ -42,6 +42,10 @@ public class BankAccountTest {
         assertEquals(120.0, soneoneElseSavingsAccount.getBalance());
         savingsAccount.addInterest();
         assertEquals(110.0 * 1.04, savingsAccount.getBalance());
+
+        SavingsAccount negativeInterest = new SavingsAccount("Bac", 100, -0.04);
+        negativeInterest.addInterest();
+        assertEquals(100 * 0.96, negativeInterest.getBalance());
     }
 
     @Test

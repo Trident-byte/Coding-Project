@@ -55,6 +55,8 @@ class Driver{
             //Expecting The number of withdrawals is 0
             System.out.println("The number of withdrawals is " + savings.getWithdrawCount());
 
+
+
             //Expecting error: Must have an interest between, but not including 0 and 1
 //           SavingsAccount savings2 = new SavingsAccount("Bd", 100, -0.2);
 
@@ -85,8 +87,6 @@ class Driver{
             //Expecting The balance in savingsAccountKid after withdrawing 60 is 40.
             System.out.println("The balance in savingsAccountKid after withdrawing 60 is " + savingsAccountKid.getBalance());
 
-            //Expecting error: Parent name entered is different than the one connecting to the account.
-//          savingsAccountKid.withdraw(60, "Mom");
 
 
 

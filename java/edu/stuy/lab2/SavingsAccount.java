@@ -8,7 +8,7 @@ public class SavingsAccount extends BankAccount {
 
    public SavingsAccount(String name, double initialDeposit, double interestRate)throws Exception {
       super(name, initialDeposit);
-      if(interestRate <= 0 || interestRate >= 1){
+      if(interestRate <= -1 || interestRate >= 1){
          throw new IllegalArgumentException("Must have an interest between, but not including 0 and 1");
       }
       this.interestRate = interestRate;
@@ -17,7 +17,12 @@ public class SavingsAccount extends BankAccount {
    public void addInterest() throws Exception {
       emptyBalance();
       double interest = getBalance() * interestRate;
-      deposit(interest);
+      if(interest > 0){
+         deposit(interest);
+      } else{
+         interest = -interest;
+         withdraw(interest);
+      }
    }
 
    public void withdraw(double amount) throws Exception{
