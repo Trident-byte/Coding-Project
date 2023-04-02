@@ -69,6 +69,9 @@ public class MyDeque<E>{
         data[start] = null;
         start++;
         size--;
+        if(start == size){
+            start = 0;
+        }
         return element;
     }
     public E removeLast() throws NoSuchElementException{
