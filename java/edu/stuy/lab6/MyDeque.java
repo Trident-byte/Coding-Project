@@ -77,6 +77,10 @@ public class MyDeque<E>{
         data[end] = null;
         end--;
         size--;
+        if(size == 0){
+            start = 0;
+            end = 0;
+        }
         return element;
     }
 
@@ -109,6 +113,7 @@ public class MyDeque<E>{
     }
     // // Return end
     public int getEnd() throws NoSuchElementException{
+        emptyArray();
         return end;
     }
 

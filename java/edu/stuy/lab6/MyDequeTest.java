@@ -10,6 +10,11 @@ public class MyDequeTest {
         MyDeque<String> q = new MyDeque<>();
         assertThrows(Exception.class, () -> q.removeFirst());
         assertThrows(Exception.class, () -> q.removeLast());
+        assertThrows(Exception.class, () -> q.getFirst());
+        assertThrows(Exception.class, () -> q.getLast());
+        assertThrows(Exception.class, () -> q.getStart());
+        assertThrows(Exception.class, () -> q.getEnd());
+        assertThrows(Exception.class, () -> q.getData());
         assertEquals(0, q.size());
     }
 
@@ -65,11 +70,12 @@ public class MyDequeTest {
 
 
     @Test
-    public void getLastWithoutAddingLast(){
+    public void getLastAndRemoveLastWithoutAddingLast(){
         MyDeque<String> q = new MyDeque<>();
         q.addFirst("James");
         assertEquals("James", q.getLast());
-
+        //Add breakpoint here
+        q.removeLast();
 
     }
 
