@@ -1,6 +1,6 @@
-import org.junit.jupiter.api.Test;
+package edu.stuy.lab6;
 
-import java.util.ArrayDeque;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 

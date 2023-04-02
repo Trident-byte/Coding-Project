@@ -1,3 +1,5 @@
+package edu.stuy.lab2;
+
 interface BankAccountInterface {
     double getBalance();
     String getName();

@@ -1,3 +1,5 @@
+package edu.stuy.lab2;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -217,15 +219,18 @@ public class BankAccountTest {
         Double initDeposit = 100.0;
         assertThrows(Exception.class, () -> {
             CheckingAccount account = new CheckingAccount(accountName, initDeposit);
-            account.withdraw(-1);
+            CheckingAccount account2 = new CheckingAccount(accountName, initDeposit);
+            account.transfer(-1, account2);
         });
         assertThrows(Exception.class, () -> {
             SavingsAccount account = new SavingsAccount(accountName, initDeposit, 0.04);
-            account.withdraw(-1);
+            SavingsAccount account2 = new SavingsAccount(accountName, initDeposit, 0.04);
+            account.transfer(-1, account2);
         });
         assertThrows(Exception.class, () -> {
             SavingsAccountKid account = new SavingsAccountKid(accountName, initDeposit, 0.04, "Leon");
-            account.withdraw(-1);
+            SavingsAccountKid account2 = new SavingsAccountKid(accountName, initDeposit, 0.04, "Leon");
+            account.transfer(-1, account2);
         });
 
     }
