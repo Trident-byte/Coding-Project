@@ -83,6 +83,8 @@ public class MyDeque<E>{
         if(size == 0){
             start = 0;
             end = 0;
+        } else if(end == -1){
+            end = data.length-1;
         }
         return element;
     }
