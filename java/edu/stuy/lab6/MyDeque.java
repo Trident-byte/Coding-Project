@@ -69,7 +69,10 @@ public class MyDeque<E>{
         data[start] = null;
         start++;
         size--;
-        if(start == data.length){
+        if(size == 0){
+            start = 0;
+            end = 0;
+        } else if(start == data.length){
             start = 0;
         }
         return element;

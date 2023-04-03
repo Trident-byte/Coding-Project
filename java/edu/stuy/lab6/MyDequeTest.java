@@ -69,7 +69,7 @@ public class MyDequeTest {
 
         assertEquals(18, q.size());
 
-        while (q.size() != 0) {
+        while (q.size() != 1) {
             if (q.size() % 2 == 1) {
                 q.removeFirst();
             } else {
@@ -77,7 +77,19 @@ public class MyDequeTest {
             }
         }
 
+        q.removeLast();
+
         assertEquals(0, q.size());
+
+        q.addFirst("pal");
+        q.addFirst("there");
+        q.addFirst("Hello");
+        q.addLast("Leon");
+        q.addFirst("Well");
+
+        assertEquals(5, q.size());
+
+
 
     }
 
